@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Class Time Table</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f2f6fb;
+    color:#222;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    background:linear-gradient(135deg,#168b8d,#168b8d);
+    color:white;
+    text-align:center;
+    padding:18px 10px;
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+
+.header h1{
+    font-size:24px;
+}
+
+.header p{
+    font-size:13px;
+    margin-top:5px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    width:95%;
+    max-width:1100px;
+    margin:20px auto;
+}
+
+
+/* =========================
+   CLASS BOX
+========================= */
+
+.class-box{
+    background:#fff;
+    margin-bottom:25px;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,.10);
+    border-left:5px solid #168b8d;
+}
+
+
+/* Class Title */
+
+.class-title{
+    background:linear-gradient(135deg,#168b8d,#168b8d);
+    color:white;
+    text-align:center;
+    padding:13px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper{
+    width:100%;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    min-width:650px;
+    border-collapse:collapse;
+}
+
+th,
+td{
+    border:1px solid #168b8d;
+    padding:12px 10px;
+    text-align:center;
+    font-size:14px;
+}
+
+
+/* Table Header */
+
+th{
+    background:#fff;
+    color:#168b8d;
+    font-weight:bold;
+}
+
+
+/* Day Column */
+
+.day{
+    font-weight:bold;
+    color:#333;
+    background:#fff;
+    white-space:nowrap;
+}
+
+
+/* Period Cells */
+
+td:not(.day){
+    color:#555;
+}
+
+
+/* Hover */
+
+tbody tr:hover td{
+    background:#f5f9ff;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .header h1{
+        font-size:21px;
+    }
+
+    .header p{
+        font-size:11px;
+    }
+
+    .container{
+        width:94%;
+        margin-top:15px;
+    }
+
+    .class-box{
+        border-radius:12px;
+        margin-bottom:18px;
+    }
+
+    .class-title{
+        font-size:17px;
+        padding:11px;
+    }
+
+    th,
+    td{
+        padding:10px 8px;
+        font-size:12px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     PAGE HEADER
+========================= -->
+
+<header class="header">
+
+    <h1>Time Table</h1>
+
+    <p>
+        Class 8th, 9th & 10th
+    </p>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN CONTAINER
+========================= -->
+
+<div class="container" id="timetableContainer">
+
+</div>
+
+
+
+<script>
+
+/* =====================================
+   TIME TABLE DATA
+===================================== */
+
+const timetable = {
+
+    "10th": {
+
+        "Monday":    ["Science", "Urdu", "Math"],
+        "Tuesday":   ["Science", "urdu", "Math"],
+        "Wednesday": ["Non - Hindi", "Science", "Urdu"],
+        "Thursday":  ["Math", "S.S.T", "Non - Hindi"],
+        "Friday":    ["Math", "English", "S.S.T"],
+        "Saturday":  ["Civis / Eonomesi", "(History) S.S.T", "English"],
+        "Sunday":    ["—", "—", "—"]
+
+    },
+
+
+    "9th": {
+
+        "Monday":    ["__", "__", "__"],
+        "Tuesday":   ["__", "__", "__"],
+        "Wednesday": ["__", "__", "__"],
+        "Thursday":  ["__", "__", "__"],
+        "Friday":    ["__", "__", "__"],
+        "Saturday":  ["__", "__", "__"],
+        "Sunday":    ["—", "—", "—"]
+
+    },
+
+
+    "8th": {
+
+        "Monday":    ["__", "__", "__"],
+        "Tuesday":   ["__", "__", "__"],
+        "Wednesday": ["__", "__", "__"],
+        "Thursday":  ["__", "__", "__"],
+        "Friday":    ["__", "__", "__"],
+        "Saturday":  ["__", "__", "__"],
+        "Sunday":    ["—", "—", "—"]
+
+    }
+
+};
+
+
+
+/* =====================================
+   DAYS
+===================================== */
+
+const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+];
+
+
+
+/* =====================================
+   CREATE TABLE
+===================================== */
+
+function createTimetable(){
+
+    const container =
+        document.getElementById("timetableContainer");
+
+    container.innerHTML = "";
+
+
+    /* Create Class Boxes */
+
+    Object.keys(timetable).forEach(className => {
+
+        const classBox =
+            document.createElement("div");
+
+        classBox.className = "class-box";
+
+
+        /* Class Title */
+
+        const title =
+            document.createElement("div");
+
+        title.className = "class-title";
+
+        title.textContent =
+            "CLASS " + className;
+
+
+        /* Table Wrapper */
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className =
+            "table-wrapper";
+
+
+        /* Table */
+
+        const table =
+            document.createElement("table");
+
+
+        /* Header */
+
+        table.innerHTML = `
+
+            <thead>
+
+                <tr>
+
+                    <th>Day</th>
+
+                    <th>1st Period</th>
+
+                    <th>2nd Period</th>
+
+                    <th>3rd Period</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody></tbody>
+
+        `;
+
+
+        const tbody =
+            table.querySelector("tbody");
+
+
+        /* Create 7 Days */
+
+        days.forEach(day => {
+
+            const row =
+                document.createElement("tr");
+
+
+            const subjects =
+                timetable[className][day];
+
+
+            row.innerHTML = `
+
+                <td class="day">
+                    ${day}
+                </td>
+
+                <td>
+                    ${subjects[0]}
+                </td>
+
+                <td>
+                    ${subjects[1]}
+                </td>
+
+                <td>
+                    ${subjects[2]}
+                </td>
+
+            `;
+
+
+            tbody.appendChild(row);
+
+        });
+
+
+        /* Add Everything */
+
+        wrapper.appendChild(table);
+
+        classBox.appendChild(title);
+
+        classBox.appendChild(wrapper);
+
+        container.appendChild(classBox);
+
+    });
+
+}
+
+
+
+/* =====================================
+   PAGE LOAD
+===================================== */
+
+createTimetable();
+
+</script>
+
+
+</body>
+</html>

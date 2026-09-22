@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f3f6fb;
+    color:#222;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    height:65px;
+    width:100%;
+    background:linear-gradient(135deg,#168b8d,#168b8d);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 3px 12px rgba(0,0,0,.18);
+}
+
+.header h1{
+    color:white;
+    font-size:24px;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery-container{
+    max-width:900px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.gallery-item{
+    width:100%;
+    height:210px;
+    overflow:hidden;
+    border-radius:12px;
+    background:white;
+    box-shadow:0 4px 12px rgba(0,0,0,.10);
+    cursor:pointer;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.3s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.06);
+}
+
+/* ================= FULL SCREEN VIEW ================= */
+
+.viewer{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+.viewer img{
+    max-width:90%;
+    max-height:82vh;
+    object-fit:contain;
+    border-radius:8px;
+}
+
+/* ================= CLOSE ================= */
+
+.close{
+    position:absolute;
+    top:18px;
+    right:25px;
+    color:white;
+    font-size:38px;
+    cursor:pointer;
+    z-index:10;
+}
+
+/* ================= PREVIOUS / NEXT ================= */
+
+.prev,
+.next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:48px;
+    height:48px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.18);
+    color:white;
+
+    font-size:32px;
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.prev{
+    left:20px;
+}
+
+.next{
+    right:20px;
+}
+
+.prev:hover,
+.next:hover{
+    background:rgba(255,255,255,.30);
+}
+
+/* ================= COUNTER ================= */
+
+.counter{
+    position:absolute;
+    bottom:22px;
+    left:50%;
+    transform:translateX(-50%);
+
+    color:white;
+    background:rgba(0,0,0,.45);
+
+    padding:7px 14px;
+    border-radius:20px;
+
+    font-size:14px;
+}
+
+/* ================= POWERED BY ================= */
+
+.powered{
+    text-align:center;
+    padding:10px 10px 30px;
+    color:#777;
+    font-size:13px;
+}
+
+.powered strong{
+    color:#1565c0;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    .header{
+        height:60px;
+    }
+
+    .header h1{
+        font-size:21px;
+    }
+
+    .gallery-container{
+        padding:0 10px;
+        margin-top:18px;
+    }
+
+    .gallery{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .gallery-item{
+        height:165px;
+        border-radius:10px;
+    }
+
+    .prev,
+    .next{
+        width:42px;
+        height:42px;
+        font-size:27px;
+    }
+
+    .prev{
+        left:8px;
+    }
+
+    .next{
+        right:8px;
+    }
+
+    .viewer img{
+        max-width:88%;
+        max-height:75vh;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+    <h1>Gallery</h1>
+</header>
+
+
+<!-- ================= GALLERY ================= -->
+
+<main class="gallery-container">
+
+    <div class="gallery">
+
+        <div class="gallery-item" onclick="openViewer(0)">
+            <img src="gallery1.jpg" alt="Gallery Photo 1">
+        </div>
+
+        <div class="gallery-item" onclick="openViewer(1)">
+            <img src="gallery2.jpg" alt="Gallery Photo 2">
+        </div>
+
+        <div class="gallery-item" onclick="openViewer(2)">
+            <img src="gallery3.jpg" alt="Gallery Photo 3">
+        </div>
+
+        <div class="gallery-item" onclick="openViewer(3)">
+            <img src="gallery4.jpg" alt="Gallery Photo 4">
+        </div>
+
+        <div class="gallery-item" onclick="openViewer(4)">
+            <img src="gallery5.jpg" alt="Gallery Photo 5">
+        </div>
+
+        <div class="gallery-item" onclick="openViewer(5)">
+            <img src="gallery6.jpg" alt="Gallery Photo 6">
+        </div>
+
+        <div class="gallery-item" onclick="openViewer(6)">
+            <img src="gallery7.jpg" alt="Gallery Photo 7">
+        </div>
+
+        <div class="gallery-item" onclick="openViewer(7)">
+            <img src="gallery8.jpg" alt="Gallery Photo 8">
+        </div>
+
+        <div class="gallery-item" onclick="openViewer(8)">
+            <img src="gallery9.jpg" alt="Gallery Photo 9">
+        </div>
+
+        <div class="gallery-item" onclick="openViewer(9)">
+            <img src="gallery10.jpg" alt="Gallery Photo 10">
+        </div>
+
+        <div class="gallery-item" onclick="openViewer(10)">
+            <img src="gallery11.jpg" alt="Gallery Photo 11">
+        </div>
+
+        <div class="gallery-item" onclick="openViewer(11)">
+            <img src="gallery12.jpg" alt="Gallery Photo 12">
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= IMAGE VIEWER ================= -->
+
+<div class="viewer" id="viewer">
+
+    <span class="close" onclick="closeViewer()">×</span>
+
+    <button class="prev" onclick="previousImage()">‹</button>
+
+    <img id="viewerImage" src="" alt="Preview">
+
+    <button class="next" onclick="nextImage()">›</button>
+
+    <div class="counter" id="counter">
+        1 / 12
+    </div>
+
+</div>
+
+
+<!-- ================= POWERED BY ================= -->
+
+<footer class="powered">
+    Powered By <strong>Nirale</strong>
+</footer>
+
+
+<script>
+
+/* ================= IMAGE LIST ================= */
+
+const images = [
+    "gallery1.jpg",
+    "gallery2.jpg",
+    "gallery3.jpg",
+    "gallery4.jpg",
+    "gallery5.jpg",
+    "gallery6.jpg",
+    "gallery7.jpg",
+    "gallery8.jpg",
+    "gallery9.jpg",
+    "gallery10.jpg",
+    "gallery11.jpg",
+    "gallery12.jpg"
+];
+
+let currentIndex = 0;
+
+
+/* ================= OPEN VIEWER ================= */
+
+function openViewer(index){
+
+    currentIndex = index;
+
+    document.getElementById("viewer").style.display = "flex";
+
+    document.body.style.overflow = "hidden";
+
+    showImage();
+}
+
+
+/* ================= SHOW IMAGE ================= */
+
+function showImage(){
+
+    document.getElementById("viewerImage").src =
+        images[currentIndex];
+
+    document.getElementById("counter").innerText =
+        (currentIndex + 1) + " / " + images.length;
+}
+
+
+/* ================= CLOSE ================= */
+
+function closeViewer(){
+
+    document.getElementById("viewer").style.display = "none";
+
+    document.body.style.overflow = "";
+}
+
+
+/* ================= NEXT ================= */
+
+function nextImage(){
+
+    currentIndex++;
+
+    if(currentIndex >= images.length){
+        currentIndex = 0;
+    }
+
+    showImage();
+}
+
+
+/* ================= PREVIOUS ================= */
+
+function previousImage(){
+
+    currentIndex--;
+
+    if(currentIndex < 0){
+        currentIndex = images.length - 1;
+    }
+
+    showImage();
+}
+
+
+/* ================= KEYBOARD ================= */
+
+document.addEventListener("keydown", function(e){
+
+    const viewer =
+        document.getElementById("viewer");
+
+    if(viewer.style.display !== "flex"){
+        return;
+    }
+
+    if(e.key === "ArrowRight"){
+        nextImage();
+    }
+
+    if(e.key === "ArrowLeft"){
+        previousImage();
+    }
+
+    if(e.key === "Escape"){
+        closeViewer();
+    }
+
+});
+
+
+/* ================= CLICK BACKGROUND TO CLOSE ================= */
+
+document.getElementById("viewer").addEventListener("click", function(e){
+
+    if(e.target === this){
+        closeViewer();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

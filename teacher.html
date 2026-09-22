@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Teacher</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f6fb;
+    color: #222;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    width: 100%;
+    height: 65px;
+
+    background: linear-gradient(135deg, #1565c0, #42a5f5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* ================= MAIN ================= */
+
+.container {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 25px auto;
+
+    padding: 0 15px;
+}
+
+/* ================= TEACHER CARD ================= */
+
+.teacher-card {
+    width: 100%;
+
+    background: white;
+
+    border-radius: 15px;
+
+    padding: 18px;
+
+    margin-bottom: 17px;
+
+    display: flex;
+    gap: 18px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+
+    border: 1px solid #e2e8f0;
+}
+
+/* ================= PHOTO ================= */
+
+.teacher-photo {
+    width: 105px;
+    height: 105px;
+
+    min-width: 105px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 4px solid #e3f2fd;
+
+    background: #ddd;
+}
+
+/* ================= CONTENT ================= */
+
+.teacher-info {
+    flex: 1;
+}
+
+.teacher-name {
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #1565c0;
+
+    margin-bottom: 6px;
+}
+
+.teacher-subject {
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #555;
+
+    margin-bottom: 8px;
+}
+
+.teacher-content {
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    color: #666;
+
+    margin-bottom: 10px;
+}
+
+/* ================= PHONE ================= */
+
+.phone {
+    display: inline-block;
+
+    text-decoration: none;
+
+    color: white;
+
+    background: #1565c0;
+
+    padding: 8px 13px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.phone:hover {
+    background: #0d47a1;
+}
+
+/* ================= POWERED BY ================= */
+
+.powered {
+    text-align: center;
+
+    padding: 20px 10px 30px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+.powered strong {
+    color: #1565c0;
+    font-size: 14px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 550px) {
+
+    .header {
+        height: 60px;
+    }
+
+    .header h1 {
+        font-size: 21px;
+    }
+
+    .container {
+        margin-top: 18px;
+        padding: 0 12px;
+    }
+
+    .teacher-card {
+        padding: 14px;
+
+        gap: 13px;
+
+        border-radius: 12px;
+    }
+
+    .teacher-photo {
+        width: 82px;
+        height: 82px;
+        min-width: 82px;
+    }
+
+    .teacher-name {
+        font-size: 17px;
+    }
+
+    .teacher-subject {
+        font-size: 13px;
+    }
+
+    .teacher-content {
+        font-size: 13px;
+    }
+
+    .phone {
+        font-size: 12px;
+        padding: 7px 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+    <h1>Teacher</h1>
+</header>
+
+
+<!-- ================= TEACHER LIST ================= -->
+
+<main class="container">
+
+
+    <!-- TEACHER 1 -->
+
+    <div class="teacher-card">
+
+        <img
+            src="teacher1.jpg"
+            alt="Teacher Photo"
+            class="teacher-photo"
+        >
+
+        <div class="teacher-info">
+
+            <div class="teacher-name">
+                Teacher Name 1
+            </div>
+
+            <div class="teacher-subject">
+                Subject: Mathematics
+            </div>
+
+            <div class="teacher-content">
+                Experienced teacher with a focus on
+                clear concepts, problem solving and
+                regular practice.
+            </div>
+
+            <a href="tel:+919999999991" class="phone">
+                📞 +91 99999 99991
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- TEACHER 2 -->
+
+    <div class="teacher-card">
+
+        <img
+            src="teacher2.jpg"
+            alt="Teacher Photo"
+            class="teacher-photo"
+        >
+
+        <div class="teacher-info">
+
+            <div class="teacher-name">
+                Teacher Name 2
+            </div>
+
+            <div class="teacher-subject">
+                Subject: Science
+            </div>
+
+            <div class="teacher-content">
+                Helps students understand science
+                through simple explanations and
+                practical examples.
+            </div>
+
+            <a href="tel:+919999999992" class="phone">
+                📞 +91 99999 99992
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- TEACHER 3 -->
+
+    <div class="teacher-card">
+
+        <img
+            src="teacher3.jpg"
+            alt="Teacher Photo"
+            class="teacher-photo"
+        >
+
+        <div class="teacher-info">
+
+            <div class="teacher-name">
+                Teacher Name 3
+            </div>
+
+            <div class="teacher-subject">
+                Subject: English
+            </div>
+
+            <div class="teacher-content">
+                Focuses on grammar, vocabulary,
+                writing skills and communication.
+            </div>
+
+            <a href="tel:+919999999993" class="phone">
+                📞 +91 99999 99993
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- TEACHER 4 -->
+
+    <div class="teacher-card">
+
+        <img
+            src="teacher4.jpg"
+            alt="Teacher Photo"
+            class="teacher-photo"
+        >
+
+        <div class="teacher-info">
+
+            <div class="teacher-name">
+                Teacher Name 4
+            </div>
+
+            <div class="teacher-subject">
+                Subject: Hindi
+            </div>
+
+            <div class="teacher-content">
+                Teaches Hindi language, literature,
+                grammar and writing skills.
+            </div>
+
+            <a href="tel:+919999999994" class="phone">
+                📞 +91 99999 99994
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- TEACHER 5 -->
+
+    <div class="teacher-card">
+
+        <img
+            src="teacher5.jpg"
+            alt="Teacher Photo"
+            class="teacher-photo"
+        >
+
+        <div class="teacher-info">
+
+            <div class="teacher-name">
+                Teacher Name 5
+            </div>
+
+            <div class="teacher-subject">
+                Subject: Social Science
+            </div>
+
+            <div class="teacher-content">
+                Covers history, geography, civics
+                and important social science topics.
+            </div>
+
+            <a href="tel:+919999999995" class="phone">
+                📞 +91 99999 99995
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- TEACHER 6 -->
+
+    <div class="teacher-card">
+
+        <img
+            src="teacher6.jpg"
+            alt="Teacher Photo"
+            class="teacher-photo"
+        >
+
+        <div class="teacher-info">
+
+            <div class="teacher-name">
+                Teacher Name 6
+            </div>
+
+            <div class="teacher-subject">
+                Subject: Physics
+            </div>
+
+            <div class="teacher-content">
+                Explains physics concepts with
+                examples, formulas and practice.
+            </div>
+
+            <a href="tel:+919999999996" class="phone">
+                📞 +91 99999 99996
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- TEACHER 7 -->
+
+    <div class="teacher-card">
+
+        <img
+            src="teacher7.jpg"
+            alt="Teacher Photo"
+            class="teacher-photo"
+        >
+
+        <div class="teacher-info">
+
+            <div class="teacher-name">
+                Teacher Name 7
+            </div>
+
+            <div class="teacher-subject">
+                Subject: Chemistry
+            </div>
+
+            <div class="teacher-content">
+                Focuses on basic concepts, reactions,
+                equations and examination preparation.
+            </div>
+
+            <a href="tel:+919999999997" class="phone">
+                📞 +91 99999 99997
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- TEACHER 8 -->
+
+    <div class="teacher-card">
+
+        <img
+            src="teacher8.jpg"
+            alt="Teacher Photo"
+            class="teacher-photo"
+        >
+
+        <div class="teacher-info">
+
+            <div class="teacher-name">
+                Teacher Name 8
+            </div>
+
+            <div class="teacher-subject">
+                Subject: Biology
+            </div>
+
+            <div class="teacher-content">
+                Teaches biology with simple diagrams,
+                examples and chapter-wise revision.
+            </div>
+
+            <a href="tel:+919999999998" class="phone">
+                📞 +91 99999 99998
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- TEACHER 9 -->
+
+    <div class="teacher-card">
+
+        <img
+            src="teacher9.jpg"
+            alt="Teacher Photo"
+            class="teacher-photo"
+        >
+
+        <div class="teacher-info">
+
+            <div class="teacher-name">
+                Teacher Name 9
+            </div>
+
+            <div class="teacher-subject">
+                Subject: Computer
+            </div>
+
+            <div class="teacher-content">
+                Covers computer basics, applications,
+                coding fundamentals and digital skills.
+            </div>
+
+            <a href="tel:+919999999999" class="phone">
+                📞 +91 99999 99999
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- TEACHER 10 -->
+
+    <div class="teacher-card">
+
+        <img
+            src="teacher10.jpg"
+            alt="Teacher Photo"
+            class="teacher-photo"
+        >
+
+        <div class="teacher-info">
+
+            <div class="teacher-name">
+                Teacher Name 10
+            </div>
+
+            <div class="teacher-subject">
+                Subject: General Studies
+            </div>
+
+            <div class="teacher-content">
+                Provides chapter-wise guidance,
+                revision support and exam preparation.
+            </div>
+
+            <a href="tel:+919999999910" class="phone">
+                📞 +91 99999 99910
+            </a>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<!-- ================= POWERED BY ================= -->
+
+<footer class="powered">
+
+    Powered By
+    <strong>Nirale</strong>
+
+</footer>
+
+</body>
+</html>

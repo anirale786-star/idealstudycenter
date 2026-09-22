@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#168b8d">
+
+<title>Ideal Study Center</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:#edf8f7;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#143f55;
+}
+
+body{
+  min-height:100vh;
+}
+
+.app{
+  width:100%;
+  max-width:520px;
+  margin:auto;
+  background:#f8fcfc;
+  min-height:100vh;
+  overflow:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+}
+
+/* =========================
+   THEME
+========================= */
+:root{
+  --teal:#168b8d;
+  --teal2:#0e7077;
+  --gold:#e4ad2e;
+  --navy:#123f58;
+  --soft:#eaf6f5;
+  --line:#d8eceb;
+  --red:#ed1c24;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header{
+  height:100px;
+  background:linear-gradient(135deg,#0c777e,#168f90);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.header img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+  padding:7px 18px;
+}
+
+/* =========================
+   MAIN
+========================= */
+main{
+  padding:10px 12px 25px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:17px;
+  box-shadow:0 7px 22px rgba(20,82,93,.08);
+}
+
+/* =========================
+   SLIDER
+========================= */
+.slider{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  border-radius:17px;
+  box-shadow:0 8px 22px rgba(20,82,93,.12);
+  background:#dceeed;
+}
+
+.slides{
+  display:flex;
+  transition:transform .5s ease;
+}
+
+.slide{
+  flex:0 0 100%;
+  width:100%;
+  cursor:default;
+}
+
+.slide img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+}
+
+.slider-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:39px;
+  height:39px;
+  border:0;
+  border-radius:50%;
+  background:rgba(12,63,74,.62);
+  color:#fff;
+  font-size:27px;
+  z-index:2;
+  cursor:pointer;
+}
+
+.prev{
+  left:9px;
+}
+
+.next{
+  right:9px;
+}
+
+.dots{
+  position:absolute;
+  bottom:9px;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:center;
+  gap:7px;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  border:0;
+  border-radius:50%;
+  padding:0;
+  background:#fff;
+  opacity:.8;
+  cursor:pointer;
+}
+
+.dot.active{
+  background:var(--gold);
+  opacity:1;
+  transform:scale(1.15);
+}
+
+/* =========================
+   QUICK BUTTONS
+   2 PER ROW
+   6 ITEMS
+========================= */
+.quick{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin:11px 0 13px;
+}
+
+.quick-item{
+  min-height:82px;
+  padding:10px 12px;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  cursor:pointer;
+  transition:transform .18s;
+  position:relative;
+}
+
+.quick-item:active{
+  transform:scale(.97);
+}
+
+.quick-icon{
+  width:55px;
+  height:55px;
+  flex:none;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  box-shadow:0 7px 15px rgba(20,82,93,.14);
+}
+
+.quick-icon svg{
+  width:29px;
+  height:29px;
+}
+
+.q1,.q2,.q3,.q4,.q5,.q6{
+  background:#168b8d;
+}
+
+.quick-name{
+  font-weight:800;
+  font-size:13px;
+  color:var(--navy);
+}
+
+/* =========================
+   RED NOTICE LIGHT
+========================= */
+.red-light{
+  position:absolute;
+  top:7px;
+  right:8px;
+  width:10px;
+  height:10px;
+  background:#ed1c24;
+  border-radius:50%;
+  box-shadow:
+    0 0 0 3px rgba(237,28,36,.13),
+    0 0 10px rgba(237,28,36,.75);
+  animation:redBlink 1.3s infinite;
+}
+
+@keyframes redBlink{
+  0%,100%{
+    opacity:1;
+    transform:scale(1);
+  }
+  50%{
+    opacity:.35;
+    transform:scale(.78);
+  }
+}
+
+/* =========================
+   BANNER
+========================= */
+.banner{
+  display:block;
+  width:100%;
+  margin:0 0 13px;
+  border-radius:17px;
+  overflow:hidden;
+  box-shadow:0 8px 22px rgba(20,82,93,.12);
+  cursor:pointer;
+}
+
+.banner img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+/* =========================
+   LATEST NOTICE
+========================= */
+.notice-card{
+  padding:14px 12px;
+  margin-bottom:13px;
+}
+
+.notice-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+
+.notice-title{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:20px;
+  font-weight:900;
+  color:var(--navy);
+}
+
+.notice-bell{
+  width:39px;
+  height:39px;
+  border-radius:12px;
+  background:var(--soft);
+  color:var(--teal);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.notice-bell svg{
+  width:23px;
+}
+
+.view{
+  font-size:13px;
+  font-weight:800;
+  color:var(--teal);
+}
+
+.marquee{
+  height:190px;
+  overflow:hidden;
+  position:relative;
+  border-top:1px solid var(--line);
+}
+
+.marquee-track{
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  animation:upward 12s linear infinite;
+}
+
+.notice{
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 2px;
+  border-bottom:1px solid #e7f0f0;
+  cursor:pointer;
+}
+
+.notice:hover{
+  background:#f7fbfb;
+}
+
+.badge{
+  background:#e83d45;
+  color:#fff;
+  border-radius:5px;
+  padding:4px 7px;
+  font-size:10px;
+  font-weight:900;
+  flex:none;
+}
+
+.notice-text{
+  flex:1;
+  font-size:13px;
+  font-weight:700;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.notice-date{
+  font-size:10px;
+  color:#6d8a98;
+  white-space:nowrap;
+}
+
+@keyframes upward{
+  from{
+    transform:translateY(0);
+  }
+  to{
+    transform:translateY(-50%);
+  }
+}
+
+.marquee:hover .marquee-track{
+  animation-play-state:paused;
+}
+
+/* =========================
+   PHONE + WHATSAPP
+========================= */
+.contact-card{
+  padding:10px;
+  margin-bottom:13px;
+}
+
+.contact-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.contact-link{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 7px;
+  border-radius:13px;
+  background:#f7fbfb;
+  cursor:pointer;
+}
+
+.contact-icon{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  flex:none;
+}
+
+.contact-icon svg{
+  width:22px;
+  height:22px;
+}
+
+.call{
+  background:var(--teal);
+}
+
+.group{
+  background:#20bd69;
+}
+
+.contact-label{
+  font-size:10px;
+  color:#6b8794;
+  margin-bottom:3px;
+}
+
+.contact-value{
+  font-size:12px;
+  font-weight:900;
+  color:var(--navy);
+  white-space:nowrap;
+}
+
+/* =========================
+   ADDRESS
+========================= */
+.address{
+  padding:15px 14px;
+  margin-bottom:13px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  cursor:pointer;
+}
+
+.pin{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--soft);
+  color:var(--teal);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:none;
+}
+
+.pin svg{
+  width:25px;
+}
+
+.address-text{
+  font-size:14px;
+  font-weight:800;
+  line-height:1.45;
+  color:var(--navy);
+}
+
+/* =========================
+   WEBSITE
+========================= */
+.website{
+  display:block;
+  text-align:center;
+  padding:14px;
+  margin-top:2px;
+  border-radius:15px;
+  background:linear-gradient(135deg,var(--teal),var(--teal2));
+  color:#fff;
+  font-size:14px;
+  font-weight:900;
+  box-shadow:0 8px 18px rgba(22,139,141,.2);
+}
+
+/* =========================
+   FIRST OPEN ALERT
+========================= */
+.alert-overlay{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(8,42,48,.55);
+  backdrop-filter:blur(8px);
+}
+
+.alert-overlay.hide{
+  display:none;
+}
+
+.alert-box{
+  width:100%;
+  max-width:390px;
+  background:#fff;
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 25px 70px rgba(0,0,0,.28);
+  animation:alertOpen .35s ease;
+}
+
+@keyframes alertOpen{
+  from{
+    opacity:0;
+    transform:scale(.88) translateY(15px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+/* ALERT IMAGE */
+.alert-image{
+  width:100%;
+  height:170px;
+  display:block;
+  object-fit:cover;
+  background:#eaf6f5;
+}
+
+/* X BUTTON */
+.alert-close{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  background:rgba(0,0,0,.55);
+  color:#fff;
+  font-size:22px;
+  line-height:35px;
+  cursor:pointer;
+  z-index:3;
+}
+
+.alert-content{
+  padding:18px 18px 20px;
+}
+
+.alert-title{
+  margin:0 35px 8px 0;
+  color:var(--navy);
+  font-size:21px;
+  font-weight:900;
+}
+
+.alert-text{
+  margin:0;
+  color:#55717d;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* =========================
+   LOADING
+========================= */
+.loading{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(10,54,62,.42);
+  backdrop-filter:blur(7px);
+}
+
+.loading.show{
+  display:flex;
+}
+
+.loader-box{
+  width:108px;
+  height:108px;
+  border-radius:25px;
+  background:rgba(255,255,255,.96);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+.spinner{
+  width:47px;
+  height:47px;
+  border-radius:50%;
+  border:5px solid #d9eeee;
+  border-top-color:var(--gold);
+  border-right-color:var(--teal);
+  animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* MOBILE ONLY */
+@media(min-width:700px){
+  body{
+    padding:0;
+  }
+
+  .app{
+    max-width:520px;
+    min-height:100vh;
+    border-radius:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- =========================
+     HEADER
+========================= -->
+<header class="header">
+  <a href="#" aria-label="Home">
+    <img
+      src="https://blogger.googleusercontent.com/img/a/AVvXsEjedz8USZItqImG3laXGgFH4aC9VUZaUh2BrokCEVMxxc90HiAdoBElFrX6KSzEzDFa4j-kOrSKuikzMiEbpbBCCrp90MGwnhIHmwJkG9JbqM6pgmMjPPg1-xdd6J1X0O3Lr0ugEzXOqG_aJzOVmUOk6w9i7wt1_BliujKM9II-KnHdpy9UAJ0aJJFNlVP9=s1599"
+      alt="Ideal Study Center Logo">
+  </a>
+</header>
+
+<main>
+
+<!-- =========================
+     SLIDER
+========================= -->
+<section class="slider" id="slider">
+
+  <div class="slides" id="slides">
+
+    <div class="slide">
+      <img src="slider1.png" alt="Slider 1">
+    </div>
+
+    <div class="slide">
+      <img src="slider2.png" alt="Slider 2">
+    </div>
+
+    <div class="slide">
+      <img src="Slide.png" alt="Slider 3">
+    </div>
+
+  </div>
+
+  <button class="slider-arrow prev" onclick="slidePrev()">‹</button>
+  <button class="slider-arrow next" onclick="slideNext()">›</button>
+
+  <div class="dots">
+    <button class="dot active" onclick="goSlide(0)"></button>
+    <button class="dot" onclick="goSlide(1)"></button>
+    <button class="dot" onclick="goSlide(2)"></button>
+  </div>
+
+</section>
+
+
+<!-- =========================
+     QUICK BUTTONS
+     RED LIGHT:
+     जिस button पर notice हो
+     वहाँ red-light रखें।
+========================= -->
+<section class="quick">
+
+<!-- NOTICE -->
+<a class="card quick-item" href="notice.html" data-external>
+
+  <!-- RED NOTICE LIGHT -->
+  <span class="red-light"></span>
+
+  <div class="quick-icon q1">
+    <svg viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.8">
+      <path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Z"/>
+      <path d="M8 4v13a3 3 0 0 0 3 3M9 8h6M9 12h6"/>
+    </svg>
+  </div>
+
+  <span class="quick-name">Notice</span>
+
+</a>
+
+
+<!-- TIME TABLE -->
+<a class="card quick-item" href="routing.html" data-external>
+
+  <!-- अगर यहाँ notice हो तो नीचे वाली line लगाएँ -->
+  <!-- <span class="red-light"></span> -->
+
+  <div class="quick-icon q2">
+    <svg viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.8">
+      <rect x="3" y="5" width="18" height="16" rx="2"/>
+      <path d="M7 3v4M17 3v4M3 10h18M7 14h3M14 14h3M7 18h3"/>
+    </svg>
+  </div>
+
+  <span class="quick-name">Time Table</span>
+
+</a>
+
+
+<!-- EXAM NOTICE -->
+<a class="card quick-item" href="no.html" data-external>
+
+  <!-- RED NOTICE LIGHT -->
+  <!-- <span class="red-light"></span> -->
+
+  <div class="quick-icon q3">
+    <svg viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.8">
+      <path d="M5 3h10l4 4v14H5z"/>
+      <path d="M15 3v5h5M8 13h8M8 17h6"/>
+      <path d="M15 17l4-4 2 2-4 4-3 1z"/>
+    </svg>
+  </div>
+
+  <span class="quick-name">Exam Notice</span>
+
+</a>
+
+
+<!-- TEACHER -->
+<a class="card quick-item" href="no.html" data-external>
+
+  <!-- अगर notice नहीं है तो red-light मत लगाएँ -->
+
+  <div class="quick-icon q4">
+    <svg viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.8">
+      <circle cx="12" cy="8" r="3"/>
+      <path d="M5 21c0-4 3-6 7-6s7 2 7 6"/>
+    </svg>
+  </div>
+
+  <span class="quick-name">Teacher's</span>
+
+</a>
+
+
+<!-- GALLERY -->
+<a class="card quick-item" href="no.html" data-external>
+
+  <div class="quick-icon q5">
+    <svg viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.8">
+      <circle cx="9" cy="8" r="3"/>
+      <circle cx="17" cy="10" r="2.5"/>
+      <path d="M3 20c0-3.2 2.6-5 6-5s6 1.8 6 5"/>
+      <path d="M14 15c3.2-.2 6 .9 7 3.7"/>
+    </svg>
+  </div>
+
+  <span class="quick-name">Gallery</span>
+
+</a>
+
+
+<!-- RESULT -->
+<a class="card quick-item" href="no.html" data-external>
+
+  <div class="quick-icon q6">
+    <svg viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.8">
+      <path d="M6 3h12v18H6z"/>
+      <path d="M9 7h6M9 11h6M9 15h3"/>
+      <path d="m15 17 1.5 1.5L20 15"/>
+    </svg>
+  </div>
+
+  <span class="quick-name">Result</span>
+
+</a>
+
+</section>
+
+
+<!-- =========================
+     BANNER
+========================= -->
+<a class="banner" href="#" data-external>
+  <img src="banner.png" alt="School Banner">
+</a>
+
+
+<!-- =========================
+     LATEST NOTICE
+========================= -->
+<section class="card notice-card">
+
+  <div class="notice-head">
+
+    <div class="notice-title">
+
+      <div class="notice-bell">
+        <svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <path d="M4 13h3l8 5V6l-8 5H4zM7 13l1 6"/>
+          <path d="M18 9c1.5 1.5 1.5 4.5 0 6"/>
+        </svg>
+      </div>
+
+      Latest Notice
+
+    </div>
+
+    <a class="view" href="notice.html" data-external>
+      View All ›
+    </a>
+
+  </div>
+
+
+  <div class="marquee">
+
+    <div class="marquee-track">
+
+      <a class="notice" href="notice.html" data-external>
+        <span class="badge">NEW</span>
+        <span class="notice-text">
+          हमारा नया App अब Launch हो चुका है! 📱✨
+        </span>
+        <span class="notice-date">
+          22 sep
+        </span>
+      </a>
+
+      <!-- दूसरा notice यहाँ add कर सकते हैं -->
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PHONE + WHATSAPP
+========================= -->
+<section class="card contact-card">
+
+  <div class="contact-row">
+
+    <a class="contact-link" href="tel:+919504006079">
+
+      <div class="contact-icon call">
+        <svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <path d="M6 3h3l2 5-2 2c1 2.5 2.5 4 5 5l2-2 5 2v3c0 2-1 3-3 3C10 20 4 14 4 6c0-2 1-3 2-3Z"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="contact-label">Phone</div>
+        <div class="contact-value">
+          +91 95040 06079
+        </div>
+      </div>
+
+    </a>
+
+
+    <a class="contact-link"
+       href="https://www.whatsapp.com/channel/0029Vb6EVIK35fLuIOyZil3r"
+       data-external>
+
+      <div class="contact-icon group">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="contact-label">WhatsApp Group</div>
+        <div class="contact-value">
+          Join Group
+        </div>
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     ADDRESS
+========================= -->
+<a class="card address"
+   href="YOUR_GOOGLE_MAPS_LINK"
+   data-external>
+
+  <div class="pin">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/>
+    </svg>
+  </div>
+
+  <div class="address-text">
+    Bairgania Road, Dhaka - 845418
+  </div>
+
+</a>
+
+
+<!-- =========================
+     WEBSITE
+========================= -->
+<a class="website"
+   href="https://idealdhaka.blogspot.com/"
+   data-external>
+   Ideal Study Center - Website
+</a>
+
+</main>
+</div>
+
+
+<!-- ==================================================
+     FIRST OPEN ALERT BOX
+================================================== -->
+<div class="alert-overlay" id="alertOverlay">
+
+  <div class="alert-box">
+
+    <!-- X CLOSE -->
+    <button class="alert-close"
+            onclick="closeAlert()">
+      ×
+    </button>
+
+    <!-- ALERT IMAGE -->
+    <img
+      class="alert-image"
+      src="lunch.png"
+      alt="Notice Image"
+    >
+
+    <div class="alert-content">
+
+      <!-- ALERT TITLE -->
+      <h2 class="alert-title">
+        🎉 New App Launched!
+      </h2>
+
+      <!-- ALERT TEXT -->
+      <p class="alert-text">
+        हमारा नया App अब Launch हो चुका है! 📱✨
+अब आप नए App और बेहतर Features के साथ App का इस्तेमाल कर सकते हैं।
+App में आपका स्वागत है! ❤️
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     LOADING
+========================= -->
+<div class="loading" id="loading">
+
+  <div class="loader-box">
+    <div class="spinner"></div>
+  </div>
+
+</div>
+
+
+<script>
+
+/* ==================================================
+   ALERT BOX ON/OFF
+==================================================
+
+   true  = Alert दिखेगा
+   false = Alert पूरी तरह बंद
+
+   जब Alert हटाना हो:
+   SHOW_ALERT = false;
+================================================== */
+
+const SHOW_ALERT = true;
+
+const alertOverlay =
+  document.getElementById("alertOverlay");
+
+
+/* =========================
+   PAGE LOAD ALERT
+========================= */
+window.addEventListener("load", function(){
+
+  if(SHOW_ALERT === true){
+
+    alertOverlay.classList.remove("hide");
+
+    document.body.style.overflow = "hidden";
+
+  }else{
+
+    alertOverlay.classList.add("hide");
+
+  }
+
+});
+
+
+/* =========================
+   CLOSE ALERT
+========================= */
+function closeAlert(){
+
+  alertOverlay.classList.add("hide");
+
+  document.body.style.overflow = "";
+
+}
+
+
+/* ==================================================
+   LOADING SYSTEM
+================================================== */
+
+const loading =
+  document.getElementById("loading");
+
+
+document.querySelectorAll("a[data-external]")
+.forEach(function(link){
+
+  link.addEventListener("click", function(e){
+
+    const url =
+      link.getAttribute("href");
+
+
+    /* EMPTY / PLACEHOLDER LINK */
+    if(
+      !url ||
+      url === "#" ||
+      url.indexOf("YOUR_") === 0
+    ){
+
+      e.preventDefault();
+
+      alert(
+        "Please add your real link in this button."
+      );
+
+      return;
+
+    }
+
+
+    e.preventDefault();
+
+
+    loading.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+
+
+    /* 5 SECOND LOADING */
+    setTimeout(function(){
+
+      loading.classList.remove("show");
+
+      document.body.style.overflow = "";
+
+
+      window.location.assign(url);
+
+    },5000);
+
+  });
+
+});
+
+
+/* ==================================================
+   PHONE CALL
+================================================== */
+
+document.querySelectorAll('a[href^="tel:"]')
+.forEach(function(link){
+
+  link.addEventListener("click",function(e){
+
+    e.preventDefault();
+
+    const phoneUrl =
+      link.getAttribute("href");
+
+
+    loading.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+
+
+    setTimeout(function(){
+
+      loading.classList.remove("show");
+
+      document.body.style.overflow = "";
+
+      window.location.href = phoneUrl;
+
+    },5000);
+
+  });
+
+});
+
+
+/* ==================================================
+   SLIDER
+================================================== */
+
+const slides =
+  document.getElementById("slides");
+
+const dots =
+  [...document.querySelectorAll(".dot")];
+
+let current = 0;
+
+let timer;
+
+
+/* UPDATE SLIDER */
+function updateSlider(){
+
+  slides.style.transform =
+    `translateX(-${current * 100}%)`;
+
+  dots.forEach(function(dot,index){
+
+    dot.classList.toggle(
+      "active",
+      index === current
+    );
+
+  });
+
+}
+
+
+/* NEXT */
+function slideNext(){
+
+  current =
+    (current + 1) % 3;
+
+  updateSlider();
+
+}
+
+
+/* PREVIOUS */
+function slidePrev(){
+
+  current =
+    (current + 2) % 3;
+
+  updateSlider();
+
+}
+
+
+/* GO TO SLIDE */
+function goSlide(index){
+
+  current = index;
+
+  updateSlider();
+
+  restartSlider();
+
+}
+
+
+/* AUTO SLIDER */
+function restartSlider(){
+
+  clearInterval(timer);
+
+  timer =
+    setInterval(
+      slideNext,
+      4500
+    );
+
+}
+
+
+restartSlider();
+
+
+/* ==================================================
+   MOBILE SWIPE
+================================================== */
+
+let startX = 0;
+
+document
+.getElementById("slider")
+.addEventListener(
+  "touchstart",
+  function(e){
+
+    startX =
+      e.touches[0].clientX;
+
+  },
+  {passive:true}
+);
+
+
+document
+.getElementById("slider")
+.addEventListener(
+  "touchend",
+  function(e){
+
+    const dx =
+      startX -
+      e.changedTouches[0].clientX;
+
+    if(Math.abs(dx) > 45){
+
+      if(dx > 0){
+
+        slideNext();
+
+      }else{
+
+        slidePrev();
+
+      }
+
+    }
+
+  },
+  {passive:true}
+);
+
+</script>
+
+</body>
+</html>

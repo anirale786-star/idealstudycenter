@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fee Check</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f6fb;
+    color: #222;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    width: 100%;
+    height: 65px;
+    background: linear-gradient(135deg, #168b8d, #168b8d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+}
+
+.header h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* ================= MAIN ================= */
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 0 15px;
+}
+
+/* ================= FEE BOX ================= */
+
+.fee-box {
+    width: 100%;
+    height: 75px;
+    margin-bottom: 15px;
+
+    background: white;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    text-decoration: none;
+    color: #222;
+
+    border: 1px solid #168b8d;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+    transition: 0.2s ease;
+
+    cursor: pointer;
+}
+
+.fee-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(0,0,0,0.13);
+}
+
+.fee-text {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.arrow {
+    font-size: 25px;
+    color: #168b8d;
+    font-weight: bold;
+}
+
+/* ================= LOADING OVERLAY ================= */
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(255,255,255,0.55);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+}
+
+/* Loading Box */
+
+.loading-box {
+    background: white;
+
+    width: 180px;
+    min-height: 150px;
+
+    border-radius: 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,0.22);
+
+    padding: 20px;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+
+    border: 5px solid #e3eaf5;
+    border-top: 5px solid #168b8d;
+
+    border-radius: 50%;
+
+    animation: spin 0.8s linear infinite;
+
+    margin-bottom: 15px;
+}
+
+.loading-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: #168b8d;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 500px) {
+
+    .header {
+        height: 60px;
+    }
+
+    .header h1 {
+        font-size: 21px;
+    }
+
+    .container {
+        margin-top: 20px;
+        padding: 0 12px;
+    }
+
+    .fee-box {
+        height: 68px;
+        padding: 0 16px;
+        border-radius: 10px;
+    }
+
+    .fee-text {
+        font-size: 16px;
+    }
+
+    .arrow {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+    <h1>Result - Check</h1>
+</header>
+
+
+<!-- ================= FEE LIST ================= -->
+
+<main class="container">
+
+    <!-- BOX 1 -->
+    <a href="fee-class-10.html"
+       class="fee-box"
+       onclick="openPage(event, this.href)">
+
+        <span class="fee-text">Result</span>
+        <span class="arrow">›</span>
+
+    </a>
+
+
+    <!-- BOX 2 -->
+    <a href="fee-class-9.html"
+       class="fee-box"
+       onclick="openPage(event, this.href)">
+
+        <span class="fee-text">Class 9th Fee</span>
+        <span class="arrow">›</span>
+
+    </a>
+
+
+    <!-- BOX 3 -->
+    <a href="fee-class-8.html"
+       class="fee-box"
+       onclick="openPage(event, this.href)">
+
+        <span class="fee-text">Class 8th Fee</span>
+        <span class="arrow">›</span>
+
+    </a>
+
+
+    <!-- BOX 4 -->
+    <a href="fee-payment.html"
+       class="fee-box"
+       onclick="openPage(event, this.href)">
+
+        <span class="fee-text">Fee Payment</span>
+        <span class="arrow">›</span>
+
+    </a>
+
+
+    <!-- BOX 5 -->
+    <a href="fee-history.html"
+       class="fee-box"
+       onclick="openPage(event, this.href)">
+
+        <span class="fee-text">Fee History</span>
+        <span class="arrow">›</span>
+
+    </a>
+
+</main>
+
+
+<!-- ================= LOADING ================= -->
+
+<div id="loadingOverlay" class="loading-overlay">
+
+    <div class="loading-box">
+
+        <div class="loader"></div>
+
+        <div class="loading-text">
+            Loading...
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ==========================================
+   PAGE OPEN + LOADING
+========================================== */
+
+function openPage(event, url) {
+
+    event.preventDefault();
+
+    const overlay = document.getElementById("loadingOverlay");
+
+    // Loading screen show
+    overlay.style.display = "flex";
+
+    // Background scroll lock
+    document.body.style.overflow = "hidden";
+
+    /*
+       थोड़ा delay इसलिए ताकि loading animation
+       दिखाई दे और फिर page open हो।
+    */
+
+    setTimeout(function () {
+
+        window.location.href = url;
+
+    }, 300);
+
+}
+
+
+/* ==========================================
+   PAGE LOAD COMPLETE
+========================================== */
+
+window.addEventListener("load", function () {
+
+    const overlay = document.getElementById("loadingOverlay");
+
+    overlay.style.display = "none";
+
+    document.body.style.overflow = "";
+
+});
+
+</script>
+
+</body>
+</html>

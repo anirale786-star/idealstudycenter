@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notice Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f2f6fb;
+    color:#222;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    background:linear-gradient(135deg,#168b8d,#168b8d);
+    color:white;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+/* Header Image */
+.header-img{
+    width:58px;
+    height:58px;
+    border-radius:12px;
+    object-fit:cover;
+    background:white;
+    padding:3px;
+    flex-shrink:0;
+}
+
+.header-content{
+    flex:1;
+}
+
+.header-content h1{
+    font-size:23px;
+    margin-bottom:4px;
+}
+
+.header-content p{
+    font-size:13px;
+    opacity:.95;
+}
+
+/* ================= NOTICE ================= */
+
+.notice-container{
+    width:95%;
+    max-width:900px;
+    margin:20px auto;
+}
+
+/* Notice Box */
+.notice-box{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    background:#fff;
+    margin-bottom:16px;
+    padding:14px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,.10);
+    border-left:5px solid #168b8d;
+
+    /* IMPORTANT:
+       No link / no pointer */
+    cursor:default;
+}
+
+/* Disable click feeling */
+.notice-box:active{
+    transform:none;
+}
+
+/* Left Image */
+.notice-image{
+    width:110px;
+    height:90px;
+    flex-shrink:0;
+    border-radius:10px;
+    overflow:hidden;
+    background:#e8f1fb;
+}
+
+.notice-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+/* Right Text */
+.notice-content{
+    flex:1;
+}
+
+.notice-content h2{
+    font-size:18px;
+    color:#168b8d;
+    margin-bottom:7px;
+}
+
+.notice-content p{
+    font-size:14px;
+    line-height:1.6;
+    color:#555;
+}
+
+.notice-date{
+    display:inline-block;
+    margin-top:8px;
+    font-size:12px;
+    color:#777;
+    background:#eef5ff;
+    padding:4px 8px;
+    border-radius:5px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    .header{
+        padding:12px;
+        gap:11px;
+    }
+
+    .header-img{
+        width:50px;
+        height:50px;
+    }
+
+    .header-content h1{
+        font-size:20px;
+    }
+
+    .header-content p{
+        font-size:11px;
+    }
+
+    .notice-container{
+        width:94%;
+        margin-top:15px;
+    }
+
+    .notice-box{
+        gap:12px;
+        padding:10px;
+        border-radius:12px;
+    }
+
+    .notice-image{
+        width:85px;
+        height:75px;
+    }
+
+    .notice-content h2{
+        font-size:15px;
+    }
+
+    .notice-content p{
+        font-size:12px;
+        line-height:1.5;
+    }
+
+    .notice-date{
+        font-size:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <!-- अपनी Header Image यहां लगाएं -->
+    <img
+        class="header-img"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk9J-yDJIJaDMbuDbqGb_MWj9KTC2jdTPoDzLGZaG1WEk-oK6uo0yQ8Sfk&s=10"
+        alt="App Logo"
+    >
+
+    <div class="header-content">
+        <h1>Notice</h1>
+        <p>Latest Notice & Important Updates</p>
+    </div>
+
+</header>
+
+
+<!-- ================= NOTICE LIST ================= -->
+
+<div class="notice-container" id="noticeContainer">
+
+</div>
+
+
+<script>
+
+/* Notice Data */
+const notices = [
+
+    {
+        title: "🎉 New App Launched!",
+        text: "🔔 Our New App is Live! 🚀 अब आपका अपना नया App आपके सामने है। नए Design • नए Features • नया Experience ✨",
+        date: "22 September 2026 - 8:30",
+        image: "logo.png"
+    },
+
+];
+
+
+/* Load Notices */
+function loadNotices(){
+
+    const container =
+        document.getElementById("noticeContainer");
+
+    container.innerHTML = "";
+
+    notices.forEach(notice => {
+
+        const box = document.createElement("div");
+
+        box.className = "notice-box";
+
+        box.innerHTML = `
+
+            <div class="notice-image">
+                <img
+                    src="${notice.image}"
+                    alt="Notice Image"
+                >
+            </div>
+
+            <div class="notice-content">
+
+                <h2>${notice.title}</h2>
+
+                <p>${notice.text}</p>
+
+                <span class="notice-date">
+                    ${notice.date}
+                </span>
+
+            </div>
+
+        `;
+
+        /*
+          कोई onclick नहीं है।
+          कोई href नहीं है।
+          इसलिए Notice पर click करने से
+          कोई दूसरा page/link open नहीं होगा।
+        */
+
+        container.appendChild(box);
+
+    });
+}
+
+
+/* Start */
+loadNotices();
+
+</script>
+
+</body>
+</html>

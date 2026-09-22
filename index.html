@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
+
+<title>Ideal Study Centre</title>
+
+<style>
+
+/* ==============================
+   RESET
+============================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    background:#ffffff;
+    font-family:Arial, sans-serif;
+}
+
+
+/* ==============================
+   MOBILE PAGE
+============================== */
+
+.page{
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#ffffff;
+
+    position:relative;
+    overflow:hidden;
+}
+
+
+/* ==============================
+   CENTER CONTENT
+============================== */
+
+.center{
+
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+}
+
+
+/* ==============================
+   LOGO
+============================== */
+
+.logo{
+
+    width:72%;
+    max-width:200px;
+
+    height:180px;
+
+    display:block;
+
+    opacity:0;
+
+    transform:translateY(70px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+
+/* Logo show */
+
+.logo.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* ==============================
+   NAME
+============================== */
+
+.name{
+
+    margin-top:12px;
+
+    min-height:32px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    color:#000000;
+
+    white-space:nowrap;
+
+    opacity:0;
+
+    transition:
+        opacity .8s ease;
+}
+
+
+/* Name show */
+
+.name.show{
+    opacity:1;
+}
+
+
+/* ==============================
+   TYPING CURSOR
+============================== */
+
+.cursor{
+
+    display:inline-block;
+
+    width:2px;
+
+    height:24px;
+
+    margin-left:4px;
+
+    background:#168b8d;
+
+    vertical-align:-4px;
+
+    animation:
+        blink .7s infinite;
+}
+
+@keyframes blink{
+
+    50%{
+        opacity:0;
+    }
+}
+
+
+/* ==============================
+   SMALL LINE
+============================== */
+
+.line{
+
+    width:0;
+
+    height:1px;
+
+    margin-top:12px;
+
+    background:#000000;
+
+    transition:
+        width .8s ease;
+}
+
+.line.show{
+    width:90px;
+}
+
+
+/* ==============================
+   SUBTITLE
+============================== */
+
+.subtitle{
+
+    margin-top:9px;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    color:#000000;
+
+    opacity:0;
+
+    transition:
+        opacity .7s ease;
+}
+
+.subtitle.show{
+    opacity:1;
+}
+
+
+/* ==============================
+   COUNTDOWN
+============================== */
+
+.timer{
+
+    position:absolute;
+
+    bottom:45px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:10px;
+
+    color:#000000;
+
+    letter-spacing:1px;
+
+    opacity:0;
+
+    transition:
+        opacity .5s ease;
+}
+
+.timer.show{
+    opacity:1;
+}
+
+
+/* ==============================
+   LOADING DOTS
+============================== */
+
+.loading{
+
+    position:absolute;
+
+    bottom:22px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:5px;
+}
+
+.loading span{
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:#000000;
+
+    animation:
+        dots 1s infinite;
+}
+
+.loading span:nth-child(2){
+    animation-delay:.15s;
+}
+
+.loading span:nth-child(3){
+    animation-delay:.3s;
+}
+
+@keyframes dots{
+
+    0%,100%{
+        opacity:.3;
+        transform:translateY(0);
+    }
+
+    50%{
+        opacity:1;
+        transform:translateY(-4px);
+    }
+}
+
+
+/* ==============================
+   SMALL MOBILE
+============================== */
+
+@media(max-width:360px){
+
+    .logo{
+        width:68%;
+    }
+
+    .name{
+        font-size:21px;
+    }
+
+    .cursor{
+        height:21px;
+    }
+}
+
+
+/* ==============================
+   TALL MOBILE
+============================== */
+
+@media(min-height:750px){
+
+    .logo{
+        width:70%;
+        max-width:290px;
+    }
+
+    .name{
+        margin-top:14px;
+        font-size:25px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <div class="center">
+
+
+        <!-- LOGO -->
+
+        <img
+            id="logo"
+            class="logo"
+
+            src="logo.png"
+
+            alt="Ideal Study Centre Logo"
+        >
+
+
+        <!-- NAME -->
+
+        <div
+            id="name"
+            class="name">
+
+            <span id="text"></span>
+
+            <span
+                id="cursor"
+                class="cursor">
+            </span>
+
+        </div>
+
+
+        <!-- LINE -->
+
+        <div
+            id="line"
+            class="line">
+        </div>
+
+
+        <!-- SUBTITLE -->
+
+        <div
+            id="subtitle"
+            class="subtitle">
+
+            BIHAR BOARD • CLASS 8 • 9 • 10
+
+        </div>
+
+
+    </div>
+
+
+    <!-- COUNTDOWN -->
+
+    <div
+        id="timer"
+        class="timer">
+
+        wait ...
+        <span id="seconds">10</span>
+
+    </div>
+
+
+    <!-- LOADING -->
+
+    <div class="loading">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+/* ==================================
+   SETTINGS
+================================== */
+
+
+/* Name */
+
+const schoolName =
+    "IDEAL STUDY CENTRE";
+
+
+/*
+   Next page
+
+   Yahan apne next page ka
+   filename likhein.
+*/
+
+const nextPage =
+    "home.html";
+
+
+/*
+   Final screen wait time
+*/
+
+const waitTime = 10;
+
+
+/* ==================================
+   ELEMENTS
+================================== */
+
+const logo =
+    document.getElementById("logo");
+
+const name =
+    document.getElementById("name");
+
+const text =
+    document.getElementById("text");
+
+const cursor =
+    document.getElementById("cursor");
+
+const line =
+    document.getElementById("line");
+
+const subtitle =
+    document.getElementById("subtitle");
+
+const timer =
+    document.getElementById("timer");
+
+const seconds =
+    document.getElementById("seconds");
+
+
+/* ==================================
+   TYPING
+================================== */
+
+let position = 0;
+
+
+function typing(){
+
+    if(position < schoolName.length){
+
+        text.textContent +=
+            schoolName[position];
+
+        position++;
+
+        setTimeout(
+            typing,
+            90
+        );
+
+    }else{
+
+        /*
+           Typing complete
+        */
+
+        cursor.style.display =
+            "none";
+
+
+        /*
+           400ms बाद logo
+        */
+
+        setTimeout(
+            showLogo,
+            400
+        );
+    }
+}
+
+
+/* ==================================
+   SHOW LOGO
+================================== */
+
+function showLogo(){
+
+    logo.classList.add(
+        "show"
+    );
+
+
+    /*
+       Name दिखाई देगा
+    */
+
+    setTimeout(
+        function(){
+
+            name.classList.add(
+                "show"
+            );
+
+        },
+        300
+    );
+
+
+    /*
+       Line
+    */
+
+    setTimeout(
+        function(){
+
+            line.classList.add(
+                "show"
+            );
+
+        },
+        800
+    );
+
+
+    /*
+       Subtitle
+    */
+
+    setTimeout(
+        function(){
+
+            subtitle.classList.add(
+                "show"
+            );
+
+        },
+        1050
+    );
+
+
+    /*
+       Animation खत्म होने के बाद
+       10 second countdown
+    */
+
+    setTimeout(
+        startTimer,
+        1400
+    );
+}
+
+
+/* ==================================
+   10 SECOND TIMER
+================================== */
+
+function startTimer(){
+
+    timer.classList.add(
+        "show"
+    );
+
+
+    let time =
+        waitTime;
+
+
+    seconds.textContent =
+        time;
+
+
+    const countdown =
+        setInterval(
+            function(){
+
+                time--;
+
+
+                if(time > 0){
+
+                    seconds.textContent =
+                        time;
+
+                }else{
+
+                    clearInterval(
+                        countdown
+                    );
+
+
+                    /*
+                       Automatic next page
+                    */
+
+                    window.location.href =
+                        nextPage;
+
+                }
+
+            },
+            1000
+        );
+}
+
+
+/* ==================================
+   START
+================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        /*
+           Page load होने के
+           500ms बाद typing
+        */
+
+        setTimeout(
+            typing,
+            500
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
