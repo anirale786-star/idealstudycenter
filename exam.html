@@ -1,1 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Examination Notice</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+        background:#f3f6f9;
+        color:#222;
+    }
+
+    /* HEADER */
+    .header{
+        height:65px;
+        background:linear-gradient(135deg,#075e54,#087f70);
+        color:white;
+        display:flex;
+        align-items:center;
+        padding:0 15px;
+        position:sticky;
+        top:0;
+        z-index:100;
+        box-shadow:0 3px 12px rgba(0,0,0,0.15);
+    }
+
+    .back-btn{
+        width:40px;
+        height:40px;
+        border:none;
+        border-radius:50%;
+        background:rgba(255,255,255,0.15);
+        color:white;
+        font-size:24px;
+        cursor:pointer;
+        margin-right:12px;
+    }
+
+    .back-btn:active{
+        transform:scale(.9);
+    }
+
+    .header-title{
+        font-size:19px;
+        font-weight:bold;
+        letter-spacing:.3px;
+    }
+
+    /* MAIN */
+    .container{
+        width:94%;
+        max-width:700px;
+        margin:20px auto 40px;
+    }
+
+    .main-title{
+        text-align:center;
+        font-size:23px;
+        font-weight:bold;
+        color:#075e54;
+        margin-bottom:5px;
+    }
+
+    .subtitle{
+        text-align:center;
+        color:#777;
+        font-size:13px;
+        margin-bottom:20px;
+    }
+
+    /* BOX */
+    .box{
+        background:white;
+        border-radius:14px;
+        margin-bottom:18px;
+        box-shadow:0 4px 15px rgba(0,0,0,0.08);
+        overflow:hidden;
+        border:1px solid #e5e5e5;
+    }
+
+    .box-title{
+        background:#075e54;
+        color:white;
+        padding:13px 15px;
+        font-size:16px;
+        font-weight:bold;
+    }
+
+    .box-content{
+        padding:15px;
+    }
+
+    /* EXAM TABLE */
+    .table-wrapper{
+        overflow-x:auto;
+    }
+
+    table{
+        width:100%;
+        border-collapse:collapse;
+        min-width:500px;
+    }
+
+    th{
+        background:#e8f5f3;
+        color:#075e54;
+        font-size:14px;
+        padding:12px 8px;
+        border:1px solid #d5e6e3;
+    }
+
+    td{
+        padding:12px 8px;
+        text-align:center;
+        border:1px solid #e5e5e5;
+        font-size:14px;
+    }
+
+    tr:nth-child(even){
+        background:#fafafa;
+    }
+
+    /* NOTICE */
+    .notice{
+        border-left:5px solid #075e54;
+        background:#f7fbfa;
+        padding:14px;
+        border-radius:8px;
+        line-height:1.6;
+        font-size:14px;
+        margin-bottom:12px;
+    }
+
+    .notice strong{
+        color:#075e54;
+    }
+
+    .important{
+        border-left-color:#e09b00;
+        background:#fffaf0;
+    }
+
+    .important strong{
+        color:#b27600;
+    }
+
+    /* ADMIT CARD */
+    .admit-card{
+        display:flex;
+        align-items:center;
+        gap:14px;
+        padding:15px;
+        background:#f5fbff;
+        border:1px solid #dcecf5;
+        border-radius:10px;
+    }
+
+    .admit-icon{
+        width:48px;
+        height:48px;
+        min-width:48px;
+        border-radius:12px;
+        background:#087f70;
+        color:white;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:24px;
+    }
+
+    .admit-text h3{
+        font-size:16px;
+        margin-bottom:5px;
+        color:#075e54;
+    }
+
+    .admit-text p{
+        font-size:13px;
+        color:#666;
+        line-height:1.5;
+    }
+
+    /* FOOTER */
+    .footer{
+        text-align:center;
+        color:#888;
+        font-size:12px;
+        padding:15px 0;
+    }
+
+    /* MOBILE */
+    @media(max-width:600px){
+
+        .header{
+            height:60px;
+        }
+
+        .header-title{
+            font-size:17px;
+        }
+
+        .container{
+            width:94%;
+            margin-top:17px;
+        }
+
+        .main-title{
+            font-size:21px;
+        }
+
+        .box-title{
+            font-size:15px;
+        }
+
+        .box-content{
+            padding:12px;
+        }
+
+        th,td{
+            font-size:13px;
+            padding:10px 7px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+
+    <button class="back-btn" onclick="goBack()">‹</button>
+
+    <div class="header-title">
+        Examination Notice
+    </div>
+
+</header>
+
+
+<!-- MAIN CONTENT -->
+<main class="container">
+
+    <h1 class="main-title">
+        EXAMINATION NOTICE
+    </h1>
+
+    <p class="subtitle">
+        Examination Schedule & Important Information
+    </p>
+
+
+    <!-- EXAMINATION SCHEDULE -->
+    <section class="box">
+
+        <div class="box-title">
+            📅 Examination Schedule
+        </div>
+
+        <div class="box-content">
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Date</th>
+                            <th>Day</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Hindi</td>
+                            <td>15 Oct 2026</td>
+                            <td>Thursday</td>
+                            <td>09:00 AM</td>
+                        </tr>
+
+                        <tr>
+                            <td>English</td>
+                            <td>17 Oct 2026</td>
+                            <td>Saturday</td>
+                            <td>09:00 AM</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mathematics</td>
+                            <td>20 Oct 2026</td>
+                            <td>Tuesday</td>
+                            <td>09:00 AM</td>
+                        </tr>
+
+                        <tr>
+                            <td>Science</td>
+                            <td>22 Oct 2026</td>
+                            <td>Thursday</td>
+                            <td>09:00 AM</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NOTICE -->
+    <section class="box">
+
+        <div class="box-title">
+            📢 Important Notice
+        </div>
+
+        <div class="box-content">
+
+            <div class="notice">
+
+                <strong>Examination Notice:</strong><br>
+
+                सभी विद्यार्थियों को सूचित किया जाता है कि
+                परीक्षा निर्धारित तिथि एवं समय के अनुसार आयोजित की जाएगी।
+                सभी विद्यार्थी परीक्षा शुरू होने से कम से कम
+                30 मिनट पहले परीक्षा केंद्र पर उपस्थित हों।
+
+            </div>
+
+            <div class="notice important">
+
+                <strong>Important:</strong><br>
+
+                परीक्षा में शामिल होने के लिए Admit Card साथ लाना
+                अनिवार्य है। बिना Admit Card के परीक्षा में प्रवेश
+                नहीं दिया जा सकता।
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ADMIT CARD NOTICE -->
+    <section class="box">
+
+        <div class="box-title">
+            🎫 Admit Card Notice
+        </div>
+
+        <div class="box-content">
+
+            <div class="admit-card">
+
+                <div class="admit-icon">
+                    🎫
+                </div>
+
+                <div class="admit-text">
+
+                    <h3>
+                        Admit Card जारी करने की सूचना
+                    </h3>
+
+                    <p>
+                        सभी विद्यार्थियों का Admit Card
+                        <b>10 October 2026</b> से उपलब्ध होगा।
+                        विद्यार्थी अपना Admit Card संबंधित
+                        विभाग/कार्यालय से प्राप्त कर सकते हैं।
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <div class="footer">
+        © 2026 Examination Department • All Rights Reserved
+    </div>
+
+</main>
+
+
+<script>
+
+    // BACK BUTTON
+    function goBack(){
+
+        if(document.referrer !== ""){
+            history.back();
+        }else{
+            alert("Previous page उपलब्ध नहीं है।");
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
